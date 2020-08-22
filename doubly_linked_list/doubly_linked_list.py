@@ -143,8 +143,6 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        # Remove at index i:
-        # 0) Check that length > i. If not, return None
         if node >= self.length:
             return None
         if self.length == 1 and node == 0:
@@ -153,16 +151,14 @@ class DoublyLinkedList:
             self.tail = None
             self.length = self.length - 1
             return target.value
-        # Iterate through the loop i-1 times:
         prev_node = self.head
         for i in range(node - 1):
-        # This will get us to prev_node points to the node before the target node
             prev_node = prev_node.next
-        target = prev_node.next
-        prev_node.next = target.next
-        target.next = None
-        self.length = self.length - 1
-        return target.value
+            target = prev_node.next
+            prev_node.next = target.next
+            target.next = None
+            self.length = self.length - 1
+            return target.value
 
     """
     Finds and returns the maximum value of all the nodes 
