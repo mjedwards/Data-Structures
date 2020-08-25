@@ -40,7 +40,7 @@ class AVLTree:
     in the tree
     """
     def update_height(self):
-        pass
+        self.height = 1 + max(self.left.height, self.right.height) 
 
     """
     Updates the balance factor on the AVLTree class
@@ -78,4 +78,9 @@ class AVLTree:
     if we need to rebalance
     """
     def insert(self, key):
-        pass
+        if not self: 
+            return AVLTree(key) 
+        elif key < self.value: 
+            self.left = self.insert(self.left, key) 
+        else: 
+            self.right = self.insert(self.right, key)
